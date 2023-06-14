@@ -1,8 +1,8 @@
 Title: Willkommen
-Date: 2010-12-03 10:20
+Date: 2023-06-14 8:00
 Category: Neuigkeiten
 
 Dieses Jahr findet das Wollbi Fest am 12. August statt. Alle Bewohner der Wollbi sin ganz herzlich eingeladen.
 
-# Impressionen aus 2022
+# Programm 2023
 ![Programm]({static}/images/prog_23.png)
