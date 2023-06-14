@@ -1,0 +1,23 @@
+AUTHOR = 'Wollbi Fest OK'
+SITENAME = 'Wollbi Fest 2023'
+SITESUBTITLE = 'Dieses Jahr am 12. August'
+SITEURL = ''
+
+PATH = 'content'
+
+TIMEZONE = 'Europe/Zurich'
+
+DEFAULT_LANG = 'de'
+
+FEED_ALL_ATOM = None
+CATEGORY_FEED_ATOM = None
+TRANSLATION_FEED_ATOM = None
+AUTHOR_FEED_ATOM = None
+AUTHOR_FEED_RSS = None
+
+LINKS = False
+SOCIAL = False
+
+DEFAULT_PAGINATION = False
+DISPLAY_CATEGORIES_ON_MENU = False
+PAGE_ORDER_BY = 'page_order'
