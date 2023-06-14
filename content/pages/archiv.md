@@ -4,6 +4,7 @@ page_order: 003
 
 Das Wollbi Fest gibt es bereits seit 1987.
 Auf Dieser Seite findet ihr historische Einladungen zum Fest.
+gallery: {photo}folder
 
 # 1987
 ![Photo]({static}/images/1987.png)
