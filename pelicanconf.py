@@ -2,6 +2,7 @@ AUTHOR = 'Wollbi Fest OK'
 SITENAME = 'Wollbi-Fescht 2023'
 SITESUBTITLE = 'Dieses Jahr am 12. August'
 SITEURL = ''
+THEME_TEMPLATES_OVERRIDES = ['/Users/welker/Dev/wollbi.ch/newfest/fest.wollbi.ch/templateoverrides']
 
 PATH = 'content'
 
@@ -21,8 +22,3 @@ SOCIAL = False
 DEFAULT_PAGINATION = False
 DISPLAY_CATEGORIES_ON_MENU = False
 PAGE_ORDER_BY = 'page_order'
-PHOTO_EXIF_KEEP = False
-PLUGINS = ["photos"]
-PHOTO_LIBRARY = "/Users/welker/Dev/wollbi.ch/newfest/fest.wollbi.ch/pictures"
-#PHOTO_EXIF_KEEP = False
-PHOTO_RESIZE_JOBS = -1
