@@ -1,5 +1,6 @@
 Title: Einladungsarchiv
 Date: 2023-06-14 20:00
+page_order: 003
 
 Das Wollbi Fest gibt es bereits seit 1987.
 Auf Dieser Seite findet ihr historische Einladungen zum Fest.
