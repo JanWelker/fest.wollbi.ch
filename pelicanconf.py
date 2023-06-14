@@ -1,5 +1,5 @@
 AUTHOR = 'Wollbi Fest OK'
-SITENAME = 'Wollbi Fest 2023'
+SITENAME = 'Wollbi-Fescht 2023'
 SITESUBTITLE = 'Dieses Jahr am 12. August'
 SITEURL = ''
 
