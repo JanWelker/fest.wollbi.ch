@@ -5,4 +5,4 @@ Category: Neuigkeiten
 Dieses Jahr findet das Wollbi Fest am 12. August statt. Alle Bewohner der Wollbi sin ganz herzlich eingeladen.
 
 # Impressionen aus 2022
-![Programm]({static}/pdfs/prog_23.pdf)
+![Programm]({static}/images/prog_23.png)
