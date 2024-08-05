@@ -1,6 +1,6 @@
 AUTHOR = 'Wollbi Fest OK'
-SITENAME = 'Wollbi-Fescht 2023'
-SITESUBTITLE = 'Dieses Jahr am 12. August'
+SITENAME = 'Wollbi-Fescht 2024'
+SITESUBTITLE = 'Dieses Jahr am 10. August'
 SITEURL = ''
 THEME_TEMPLATES_OVERRIDES = ['/Users/welker/Dev/wollbi.ch/newfest/fest.wollbi.ch/templateoverrides']
 
