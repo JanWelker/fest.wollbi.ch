@@ -69,5 +69,9 @@ Auf Dieser Seite findet ihr historische Einladungen zum Fest.
 
 # 2021
 ![Photo]({static}/images/2021.png)
+
 # 2022
 ![Photo]({static}/images/2022.png)
+
+# 2023
+![Photo]({static}/images/2023.png)
