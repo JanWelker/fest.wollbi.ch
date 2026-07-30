@@ -99,3 +99,7 @@ Auf Dieser Seite findet ihr historische Einladungen zum Fest.
 # 2023
 
 ![Photo]({static}/images/2023.png)
+
+# 2024
+
+![Photo]({static}/images/prog_24.png)
