@@ -1,6 +1,6 @@
 AUTHOR = 'Wollbi Fest OK'
-SITENAME = 'Wollbi-Fescht 2024'
-SITESUBTITLE = 'Dieses Jahr am 10. August'
+SITENAME = 'Wollbi-Fescht 2026'
+SITESUBTITLE = 'Dieses Jahr am 8. August'
 SITEURL = ''
 THEME_TEMPLATES_OVERRIDES = ['templateoverrides']
 

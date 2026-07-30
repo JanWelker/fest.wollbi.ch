@@ -5,7 +5,7 @@ Category: Neuigkeiten
 save_as: index.html
 page_order: 001
 
-Dieses Jahr findet das **Wollbi-Fescht am 10. August** statt. Alle Bewohnerinnen und Bewohner der Wollbi sind ganz herzlich eingeladen.
+Dieses Jahr findet das **Wollbi-Fescht am 8. August** statt. Alle Bewohnerinnen und Bewohner der Wollbi sind ganz herzlich eingeladen.
 
 # Sponsor gefunden!
 
