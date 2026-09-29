@@ -2,9 +2,9 @@
 # the toolchain nor a shell. Built by .github/workflows/push-image.yml and
 # deployed from JanWelker/homelab-apps.
 #
-# The builder is Debian, not Alpine, because the runtime is: sharp ships
-# prebuilt binaries per libc, and a musl build would not load on glibc.
-FROM node:24-bookworm-slim@sha256:0e0ff40c39bc087845bfb27465a0df4ea419520094bc35842ff83dd8cbe6f9b6 AS base
+# The builder is Debian trixie, not Alpine, because the runtime is: sharp
+# ships prebuilt binaries per libc, and a musl build would not load on glibc.
+FROM node:24-trixie-slim@sha256:8ec5d7557396cfe32d21c3f9c13072355ceab22b584578ca4bb28af31120cffe AS base
 
 FROM base AS deps
 WORKDIR /app
@@ -28,7 +28,7 @@ RUN mkdir -p /app/.next/standalone/media
 
 # nonroot is uid 65532; the deployment runs as the same one, so the volume
 # needs no chown.
-FROM gcr.io/distroless/nodejs24-debian12:nonroot@sha256:14d42e2511532589a7c7e01a753667a74fcc96266e137e8125006b87b0c32d0a AS runner
+FROM gcr.io/distroless/nodejs24-debian13:nonroot@sha256:bb6b03d81066993293a10feda7250e8e1cc034035fe9b61cfceededa7c8bf04d AS runner
 WORKDIR /app
 ENV NODE_ENV=production
 ENV NEXT_TELEMETRY_DISABLED=1
