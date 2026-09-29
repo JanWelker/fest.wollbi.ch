@@ -1,9 +1,18 @@
-import React from 'react'
+import { Chewy, Nunito } from 'next/font/google'
 import { getPayload } from 'payload'
+import React from 'react'
 
+import { Garland } from '@/components/Garland'
+import { NavLinks } from '@/components/NavLinks'
 import config from '@/payload.config'
 import { Analytics } from './Analytics'
 import './styles.css'
+
+// The flyer's lettering is hand-drawn; Chewy is the web font closest to it.
+// next/font downloads both at build time and serves them from this site, so
+// a visitor's browser never asks Google for anything.
+const display = Chewy({ weight: '400', subsets: ['latin'], variable: '--font-display', display: 'swap' })
+const body = Nunito({ weight: ['400', '600', '700', '800'], subsets: ['latin'], variable: '--font-body', display: 'swap' })
 
 export const metadata = {
   title: 'Wollbi-Fescht',
@@ -19,25 +28,42 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     sort: 'order',
     limit: 50,
   })
+  const links = pages.docs.map((page) => ({
+    href: page.slug === 'home' ? '/' : `/${page.slug}`,
+    label: page.navLabel || page.title,
+  }))
 
   return (
-    <html lang="de">
+    <html lang="de" className={`${display.variable} ${body.variable}`}>
       <body>
-        <header className="banner">
-          <a className="brand" href="/">
-            <span className="name">{site?.name ?? 'Wollbi-Fescht'}</span>
-            {site?.subtitle ? <span className="subtitle">{site.subtitle}</span> : null}
-          </a>
-          <nav>
-            {pages.docs.map((page) => (
-              <a key={page.id} href={page.slug === 'home' ? '/' : `/${page.slug}`}>
-                {page.navLabel || page.title}
-              </a>
-            ))}
+        <a className="skip" href="#inhalt">
+          Zum Inhalt
+        </a>
+        <header className="site-header">
+          <nav className="nav wrap" aria-label="Hauptnavigation">
+            <a className="brand" href="/">
+              {site?.name ?? 'Wollbi-Fescht'}
+            </a>
+            <NavLinks links={links} />
           </nav>
+          <Garland />
         </header>
-        <main>{children}</main>
-        <footer>{site?.footer ?? 'wollbi.ch'}</footer>
+        <main id="inhalt">{children}</main>
+        <footer className="site-footer">
+          <Garland offset={2} className="garland-footer" />
+          <div className="footer-inner wrap">
+            <span className="brand">{site?.name ?? 'Wollbi-Fescht'}</span>
+            <span>
+              {site?.footer ?? '© wollbi.ch'}
+              {site?.email ? (
+                <>
+                  {' · '}
+                  <a href={`mailto:${site.email}`}>{site.email}</a>
+                </>
+              ) : null}
+            </span>
+          </div>
+        </footer>
         <Analytics />
       </body>
     </html>

@@ -11,7 +11,9 @@ const nextConfig: NextConfig = {
   // to copy. See the deployment in JanWelker/homelab-apps.
   output: 'standalone',
   images: {
-    localPatterns: [{ pathname: '/api/media/file/**' }],
+    // Uploads, and the one theme image. Anything else is refused by the
+    // optimiser rather than resized on request.
+    localPatterns: [{ pathname: '/api/media/file/**' }, { pathname: '/mascot.png' }],
   },
   turbopack: {
     root: path.resolve(dirname),

@@ -1,16 +1,55 @@
-// The three Pelican pages, as they were in content/pages/*.md before the
-// migration. This file is the migration: after the first seed the database
-// is the source of truth and editing happens in /admin.
+// The Pelican pages and the 2026 flyer, as the seed writes them. After the
+// first seed the database is the source of truth and editing happens in
+// /admin; this file only matters to an empty database.
 
 export const site = {
   name: 'Wollbi-Fescht',
-  subtitle: 'Das Quartierfest an der Wollbacherstrasse',
+  subtitle: 'syt 1987 an der Wollbacherstrasse',
+  date: 'Samstag, 8. August 2026',
+  intro:
+    'Alle Bewohnerinnen und Bewohner der Wollbi sind ganz herzlich eingeladen. Die Strasse gehört uns von 10:00 bis 24:00.',
+  email: 'fest@wollbi.ch',
+  team: [
+    { house: 'W6', names: 'Céline' },
+    { house: 'W7', names: 'Andrea' },
+    { house: 'W8', names: 'Simon' },
+    { house: 'W9', names: 'Sina' },
+    { house: 'W42', names: 'Benj & Melanie' },
+  ],
   footer: '© wollbi.ch',
 }
 
 export const admin = {
   email: process.env.SEED_ADMIN_EMAIL || 'fest@wollbi.ch',
   name: 'Wollbi Fest OK',
+}
+
+export const sponsor = {
+  title: 'Sponsor gefunden!',
+  text: 'Wir freuen uns sehr, dass Susan & Markus (Wollbi 2) den Apéro sponsern werden.',
+}
+
+// The 2026 flyer, as text.
+export const programme = {
+  items: [
+    { time: '10:00', title: 'Strasse gesperrt', text: 'Bitte alle Autos wegfahren.' },
+    {
+      time: '11:00',
+      title: 'Brunch',
+      text: 'Frischer Zopf aus den Wollbi-Backöfen ist organisiert. Alles Weitere bitte selbst mitbringen.',
+    },
+    { time: '17:00', title: 'Apéro', text: 'Offeriert von W2.' },
+    { time: '18:30', title: 'Grill & Buffet', text: 'Für das Buffet bitte eine Beilage oder ein Dessert mitbringen.' },
+    { time: '24:00', title: 'Ende', text: '' },
+  ],
+  asideTitle: 'Bitte mitbringen',
+  asideText: 'Zum Brunch: alles ausser dem Zopf, der ist organisiert. Zum Buffet: eine Beilage oder ein Dessert.',
+  flyer: 'prog_26.png',
+}
+
+export const archiveTeaser = {
+  heading: 'Einladungen seit 1987',
+  text: 'Der Späher mit dem Fernrohr war schon auf der allerersten.',
 }
 
 // year -> the invitation scans for it, in the order the archive page had them
@@ -41,27 +80,6 @@ export const archive: [string, string[]][] = [
   ['2024', ['prog_24.png']],
 ]
 
-export const welcome = {
-  intro: `Dieses Jahr findet das **Wollbi-Fescht am 8. August** statt. Alle Bewohnerinnen und Bewohner der Wollbi sind ganz herzlich eingeladen.
-
-# Sponsor gefunden!
-
-Wir freuen uns sehr, dass Susan & Markus (Wollbi 2) den Apéro sponsern werden.
-
-# Programm 2026`,
-  programme: 'prog_26.png',
-}
-
-export const info = `Das Wollbi Fest findet seit 1987 an der Wollbacherstrasse statt.
-
-Im OK der diesjährigen Ausgabe sind:
-
-* W6: Céline
-* W7: Andrea
-* W8: Simon
-* W9: Sina
-* W42: Benj & Melanie
-
-Anregungen und Fragen können gerne an [fest@wollbi.ch](mailto:fest@wollbi.ch) gesendet werden.`
+export const info = `Das Wollbi Fest findet seit 1987 an der Wollbacherstrasse statt.`
 
 export const archiveIntro = `Das Wollbi Fest gibt es bereits seit 1987. Auf dieser Seite findet ihr historische Einladungen zum Fest.`

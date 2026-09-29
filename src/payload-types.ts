@@ -160,6 +160,46 @@ export interface Page {
             blockType: 'prose';
           }
         | {
+            title: string;
+            text?: string | null;
+            tone?: ('sonne' | 'linie') | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'callout';
+          }
+        | {
+            heading?: string | null;
+            items?:
+              | {
+                  /**
+                   * z. B. 17:00
+                   */
+                  time: string;
+                  title: string;
+                  text?: string | null;
+                  id?: string | null;
+                }[]
+              | null;
+            /**
+             * z. B. «Bitte mitbringen». Leer lassen für keinen Kasten.
+             */
+            asideTitle?: string | null;
+            asideText?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'schedule';
+          }
+        | {
+            heading?: string | null;
+            /**
+             * Die Personen selbst stehen unter Website → OK.
+             */
+            note?: string | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'team';
+          }
+        | {
             heading?: string | null;
             images?:
               | {
@@ -170,6 +210,15 @@ export interface Page {
             id?: string | null;
             blockName?: string | null;
             blockType: 'gallery';
+          }
+        | {
+            heading?: string | null;
+            text?: string | null;
+            archiveSlug?: string | null;
+            count?: number | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'archiveTeaser';
           }
         | {
             label: string;
@@ -327,6 +376,40 @@ export interface PagesSelect<T extends boolean = true> {
               id?: T;
               blockName?: T;
             };
+        callout?:
+          | T
+          | {
+              title?: T;
+              text?: T;
+              tone?: T;
+              id?: T;
+              blockName?: T;
+            };
+        schedule?:
+          | T
+          | {
+              heading?: T;
+              items?:
+                | T
+                | {
+                    time?: T;
+                    title?: T;
+                    text?: T;
+                    id?: T;
+                  };
+              asideTitle?: T;
+              asideText?: T;
+              id?: T;
+              blockName?: T;
+            };
+        team?:
+          | T
+          | {
+              heading?: T;
+              note?: T;
+              id?: T;
+              blockName?: T;
+            };
         gallery?:
           | T
           | {
@@ -337,6 +420,16 @@ export interface PagesSelect<T extends boolean = true> {
                     image?: T;
                     id?: T;
                   };
+              id?: T;
+              blockName?: T;
+            };
+        archiveTeaser?:
+          | T
+          | {
+              heading?: T;
+              text?: T;
+              archiveSlug?: T;
+              count?: T;
               id?: T;
               blockName?: T;
             };
@@ -442,6 +535,25 @@ export interface Site {
   id: number;
   name: string;
   subtitle?: string | null;
+  /**
+   * So wie es oben auf der Startseite stehen soll, z. B. «Samstag, 8. August 2026».
+   */
+  date?: string | null;
+  /**
+   * Der Satz unter dem Titel.
+   */
+  intro?: string | null;
+  email?: string | null;
+  team?:
+    | {
+        /**
+         * z. B. W6
+         */
+        house: string;
+        names: string;
+        id?: string | null;
+      }[]
+    | null;
   footer?: string | null;
   updatedAt?: string | null;
   createdAt?: string | null;
@@ -453,6 +565,16 @@ export interface Site {
 export interface SiteSelect<T extends boolean = true> {
   name?: T;
   subtitle?: T;
+  date?: T;
+  intro?: T;
+  email?: T;
+  team?:
+    | T
+    | {
+        house?: T;
+        names?: T;
+        id?: T;
+      };
   footer?: T;
   updatedAt?: T;
   createdAt?: T;
