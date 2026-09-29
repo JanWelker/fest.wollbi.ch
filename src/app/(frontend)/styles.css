@@ -1,21 +1,41 @@
-/* The Pelican theme was Smashing Magazine's; this keeps its shape -- a wide
-   centred column, a banner with the title and a flat nav -- and drops the
-   parts that only existed because the theme had them. */
+/* Fähnli: the 2026 flyer as a website. Cream paper, the flyer's sky-blue
+   lettering, and its three pennant colours -- sun, meadow, berry. Dark mode
+   is the same party after sunset: a night-blue street under the same flags. */
 
 :root {
-  --ink: #241f1c;
-  --paper: #fbf8f4;
-  --accent: #9a3b1b;
-  --rule: #e2d9cd;
-  --measure: 46rem;
+  --paper: #fffbf2;
+  --paper-2: #f6eedc;
+  --card: #ffffff;
+  --line: #efe6d3;
+  --ink: #22384a;
+  --ink-soft: #3e5566;
+  --blue: #2f7fb8;
+  --sun: #f2c230;
+  --meadow: #5fa86e;
+  --berry: #c2366b;
+  --button: #c2366b;
+  --link: #9e2656;
+  --string: #8a7a66;
+  --on-color: #22384a;
+  --footer: #22384a;
+  --footer-ink: #fffbf2;
+  --measure: 72rem;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --ink: #ece5dc;
-    --paper: #1a1715;
-    --accent: #e08a5f;
-    --rule: #3a322c;
+    --paper: #15222c;
+    --paper-2: #1c2d39;
+    --card: #1e303d;
+    --line: #2c4252;
+    --ink: #fff6e6;
+    --ink-soft: #c9d3da;
+    --blue: #8ccaf2;
+    --meadow: #7cc08a;
+    --berry: #e0588a;
+    --link: #ffb3cc;
+    --string: #6f8594;
+    --footer: #0e1820;
   }
 }
 
@@ -29,108 +49,549 @@ html {
 
 body {
   margin: 0;
-  padding: 0 1rem 4rem;
   background: var(--paper);
   color: var(--ink);
-  font: 1.05rem/1.65 Georgia, "Iowan Old Style", "Times New Roman", serif;
+  font: 1.125rem/1.6 var(--font-body), system-ui, sans-serif;
 }
 
-.banner {
+a {
+  color: var(--link);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-display), cursive;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+h2 {
+  margin: 0 0 1.25rem;
+  font-size: clamp(2.4rem, 5vw, 3.5rem);
+  color: var(--blue);
+}
+
+.wrap {
+  width: 100%;
   max-width: var(--measure);
-  margin: 0 auto;
-  padding: 2.5rem 0 1rem;
-  border-bottom: 1px solid var(--rule);
+  margin-inline: auto;
+  padding-inline: 1.5rem;
+}
+
+.skip {
+  position: absolute;
+  left: -999px;
+}
+
+.skip:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--card);
+}
+
+/* ------------------------------------------------------------ header */
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 2rem;
+  padding-top: 1.25rem;
 }
 
 .brand {
-  display: block;
-  color: inherit;
+  font-family: var(--font-display), cursive;
+  font-size: 1.9rem;
+  color: var(--blue);
   text-decoration: none;
 }
 
-.brand .name {
-  display: block;
-  font-size: 2rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 800;
 }
 
-.brand .subtitle {
-  display: block;
-  color: var(--accent);
-  font-size: 1.05rem;
+.nav-links a {
+  display: inline-block;
+  padding: 0.5rem 0 0.25rem;
+  color: var(--ink);
+  text-decoration: none;
+  border-bottom: 4px solid transparent;
 }
 
-.banner nav {
+.nav-links a:hover,
+.nav-links a[aria-current='page'] {
+  border-bottom-color: var(--berry);
+}
+
+.garland {
+  display: block;
+  width: 100%;
+  height: 96px;
+}
+
+/* -------------------------------------------------------------- hero */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 2.5rem;
+  padding-block: 0.5rem 3rem;
+}
+
+.hero-date {
+  margin: 0;
+  font-family: var(--font-display), cursive;
+  font-size: 1.9rem;
+  color: var(--berry);
+}
+
+.hero-title {
+  margin: 0.5rem 0;
+  font-size: clamp(3.4rem, 8vw, 6.6rem);
+  line-height: 0.95;
+  color: var(--blue);
+}
+
+.hero-subtitle {
+  margin: 0;
+  font-family: var(--font-display), cursive;
+  font-size: 2.1rem;
+  line-height: 1.2;
+}
+
+.hero-intro {
+  max-width: 35rem;
+  margin: 1.25rem 0 0;
+  font-size: 1.35rem;
+  line-height: 1.55;
+}
+
+.hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: 1rem;
-}
-
-.banner nav a {
-  color: var(--accent);
-  text-decoration: none;
-  font-family: system-ui, sans-serif;
-  font-size: 0.95rem;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-}
-
-.banner nav a:hover {
-  text-decoration: underline;
-}
-
-main {
-  max-width: var(--measure);
-  margin: 0 auto;
-  padding-top: 1.5rem;
-}
-
-main h1 {
-  font-size: 1.9rem;
-  margin: 1rem 0 1.5rem;
-}
-
-main h2 {
-  margin-top: 2.5rem;
-  font-size: 1.35rem;
-  border-bottom: 1px solid var(--rule);
-  padding-bottom: 0.3rem;
-}
-
-main a {
-  color: var(--accent);
-}
-
-.gallery .images {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
   gap: 1rem;
-  margin: 1rem 0 2rem;
+  margin-top: 1.75rem;
 }
 
-.gallery img {
+.hero-mascot img {
+  display: block;
   width: 100%;
   height: auto;
-  border: 1px solid var(--rule);
-  background: #fff;
 }
 
-.download a {
+/* The drawing is black ink; after sunset it needs its paper back. */
+@media (prefers-color-scheme: dark) {
+  .hero-mascot {
+    padding: 1.25rem;
+    border-radius: 1.75rem;
+    background: #fff6e6;
+    transform: rotate(2deg);
+  }
+}
+
+.button {
   display: inline-block;
-  padding: 0.5rem 0.9rem;
-  border: 1px solid var(--accent);
-  border-radius: 0.25rem;
+  min-height: 44px;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 800;
   text-decoration: none;
 }
 
-footer {
-  max-width: var(--measure);
-  margin: 3rem auto 0;
-  padding-top: 1rem;
-  border-top: 1px solid var(--rule);
-  color: #8a7f74;
-  font-family: system-ui, sans-serif;
-  font-size: 0.85rem;
+.button-primary {
+  background: var(--button);
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: #a22a58;
+}
+
+.button-secondary {
+  border: 2px solid var(--ink);
+  color: var(--ink);
+}
+
+.button-secondary:hover {
+  background: var(--card);
+}
+
+/* ---------------------------------------------------------- sections */
+
+main > section {
+  margin-bottom: 4.5rem;
+}
+
+main > .page-header {
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  margin: 1rem 0 0;
+  font-size: clamp(3rem, 7vw, 5rem);
+  color: var(--blue);
+}
+
+.lead {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+.prose {
+  font-size: 1.2rem;
+}
+
+/* The line length, not the section, is what gets capped: the section keeps
+   the page's left edge so text lines up with the headings. */
+.prose > * {
+  max-width: 48rem;
+}
+
+.prose h1,
+.prose h2 {
+  margin-top: 2.5rem;
+  font-size: 2.4rem;
+  color: var(--blue);
+}
+
+.callout {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 1.5rem;
+  padding: 1.6rem 2.25rem;
+  border-radius: 1.5rem;
+}
+
+.callout-sonne {
+  background: var(--sun);
+  color: var(--on-color);
+}
+
+.callout-linie {
+  border: 3px dashed var(--meadow);
+  background: var(--card);
+}
+
+.callout-title {
+  margin: 0;
+  font-size: 2.3rem;
+  color: inherit;
+}
+
+.callout-text {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+/* ---------------------------------------------------------- programme */
+
+.schedule {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 21rem;
+  gap: 3.5rem;
+  align-items: start;
+}
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2.1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: 2rem 9rem minmax(0, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.pennant {
+  width: 0;
+  height: 0;
+  margin-top: 0.9rem;
+  border-left: 16px solid transparent;
+  border-right: 16px solid transparent;
+  border-top: 22px solid var(--sun);
+}
+
+.pennant-meadow {
+  border-top-color: var(--meadow);
+}
+
+.pennant-berry {
+  border-top-color: var(--berry);
+}
+
+.timeline-time {
+  font-family: var(--font-display), cursive;
+  font-size: 2.5rem;
+  line-height: 1;
+  color: var(--blue);
+}
+
+.timeline-body h3 {
+  margin: 0 0 0.25rem;
+  font-size: 1.9rem;
+}
+
+.timeline-body p {
+  margin: 0;
+  max-width: 34rem;
+  color: var(--ink-soft);
+}
+
+.schedule-aside {
+  margin-top: 6.5rem;
+  padding: 1.9rem;
+  border-radius: 1.5rem;
+  border: 3px dashed var(--meadow);
+  background: var(--card);
+}
+
+.schedule-aside h3 {
+  margin: 0 0 0.75rem;
+  font-size: 2rem;
+}
+
+.schedule-aside p {
+  margin: 0;
+  color: var(--ink-soft);
+}
+
+/* --------------------------------------------------------------- team */
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 1.25rem;
+  margin: 0 0 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.team-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1.5rem 0.75rem;
+  border-radius: 1.25rem;
+  border: 2px solid var(--line);
+  background: var(--card);
+  text-align: center;
+}
+
+.house {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 4.75rem;
+  height: 4.75rem;
+  border-radius: 50%;
+  font-family: var(--font-display), cursive;
+  font-size: 1.85rem;
+  color: var(--on-color);
+  background: var(--sun);
+}
+
+.house-meadow {
+  background: var(--meadow);
+}
+
+.house-berry {
+  background: var(--berry);
+  color: #ffffff;
+}
+
+.team-names {
+  font-weight: 800;
+}
+
+/* ---------------------------------------------------------- archive */
+
+.archive-teaser {
+  padding-block: 4rem;
+  background: var(--paper-2);
+}
+
+.section-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.section-head h2 {
+  margin-bottom: 0.5rem;
+}
+
+.more {
+  font-weight: 800;
+}
+
+.invitations {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 2.5rem 1.75rem;
+}
+
+.invitation {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: center;
+}
+
+/* The link must take the column's width, or the image inside it, sized to
+   100% of the link, collapses to nothing. */
+.invitation a {
+  display: block;
+}
+
+.invitation img {
+  display: block;
+  width: 100%;
+  height: auto;
+  padding: 0.5rem;
+  background: #ffffff;
+  box-shadow: 0 6px 16px rgba(20, 30, 40, 0.18);
+}
+
+.invitation figcaption {
+  font-family: var(--font-display), cursive;
+  font-size: 1.6rem;
+  color: var(--blue);
+}
+
+
+/* ------------------------------------------------------------ footer */
+
+/* The dark band is the inner row only: a dark footer behind the bunting
+   shows as a hairline seam where the SVG meets it. */
+.site-footer {
+  color: var(--footer-ink);
+}
+
+.footer-inner {
+  max-width: none;
+  padding-inline: max(1.5rem, calc((100% - var(--measure)) / 2 + 1.5rem));
+  background: var(--footer);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-block: 1.75rem 2.25rem;
+}
+
+.site-footer .brand {
+  color: var(--footer-ink);
+  font-size: 1.6rem;
+}
+
+.site-footer a {
+  color: #ffe08a;
+}
+
+/* ----------------------------------------------------------- phones */
+
+@media (max-width: 720px) {
+  body {
+    font-size: 1.05rem;
+  }
+
+  .garland {
+    height: 64px;
+  }
+
+  .nav-links {
+    gap: 1.25rem;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 1.5rem;
+  }
+
+  .hero-mascot {
+    order: -1;
+    max-width: 22rem;
+    margin-inline: auto;
+  }
+
+  .hero-date {
+    font-size: 1.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.6rem;
+  }
+
+  .hero-intro {
+    font-size: 1.15rem;
+  }
+
+  main > section {
+    margin-bottom: 3.25rem;
+  }
+
+  .callout {
+    padding: 1.4rem 1.5rem;
+  }
+
+  .callout-title {
+    font-size: 1.9rem;
+  }
+
+  .schedule {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 2rem;
+  }
+
+  .timeline-item {
+    grid-template-columns: 2rem minmax(0, 1fr);
+    gap: 0.25rem 1rem;
+  }
+
+  .timeline-time {
+    font-size: 2.1rem;
+  }
+
+  .timeline-body {
+    grid-column: 2;
+  }
+
+  .schedule-aside {
+    margin-top: 0;
+  }
+
+  .team-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .invitations {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 2rem 1.25rem;
+  }
+
+  .archive-teaser {
+    padding-block: 3rem;
+  }
 }

@@ -2,6 +2,7 @@ import { getPayload } from 'payload'
 import { notFound } from 'next/navigation'
 
 import config from '@/payload.config'
+import { Hero } from '@/components/Hero'
 import { PageBody } from '@/components/PageBody'
 
 // Rendered per request: the content is in Postgres, and a build that
@@ -10,19 +11,17 @@ export const dynamic = 'force-dynamic'
 
 export default async function HomePage() {
   const payload = await getPayload({ config: await config })
-  const found = await payload.find({
-    collection: 'pages',
-    where: { slug: { equals: 'home' } },
-    depth: 2,
-    limit: 1,
-  })
+  const [found, site] = await Promise.all([
+    payload.find({ collection: 'pages', where: { slug: { equals: 'home' } }, depth: 2, limit: 1 }),
+    payload.findGlobal({ slug: 'site' }),
+  ])
   const page = found.docs[0]
   if (!page) notFound()
 
   return (
     <>
-      <h1>{page.title}</h1>
-      <PageBody layout={page.layout as never} />
+      <Hero site={site} />
+      <PageBody layout={page.layout as never} site={site} />
     </>
   )
 }

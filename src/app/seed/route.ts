@@ -4,7 +4,7 @@ import path from 'path'
 import { getPayload } from 'payload'
 
 import { markdown } from '@/lib/lexical'
-import { admin, archive, archiveIntro, info, site, welcome } from './content'
+import { admin, archive, archiveIntro, archiveTeaser, info, programme, site, sponsor } from './content'
 
 export const dynamic = 'force-dynamic'
 export const maxDuration = 300
@@ -66,11 +66,17 @@ export const POST = async (request: Request) => {
       order: 1,
       showInNav: true,
       layout: [
-        { blockType: 'prose', content: markdown(welcome.intro) },
+        { blockType: 'callout', tone: 'sonne', ...sponsor },
         {
-          blockType: 'gallery',
-          images: [{ image: media[welcome.programme] }],
+          blockType: 'schedule',
+          heading: 'Programm',
+          items: programme.items,
+          asideTitle: programme.asideTitle,
+          asideText: programme.asideText,
         },
+        { blockType: 'download', label: 'Das Programm als Flyer', file: media[programme.flyer] },
+        { blockType: 'team', heading: 'Euer OK' },
+        { blockType: 'archiveTeaser', archiveSlug: 'archiv', count: 5, ...archiveTeaser },
       ],
     } as never,
   })
@@ -83,7 +89,10 @@ export const POST = async (request: Request) => {
       navLabel: 'Info',
       order: 2,
       showInNav: true,
-      layout: [{ blockType: 'prose', content: markdown(info) }],
+      layout: [
+        { blockType: 'prose', content: markdown(info) },
+        { blockType: 'team', heading: 'Im OK der diesjährigen Ausgabe' },
+      ],
     } as never,
   })
 
