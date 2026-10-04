@@ -1,6 +1,8 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:recommended"
-  ]
+    "github>JanWelker/renovate-config"
+  ],
+  "description": "Private on GitHub Free, so no ruleset can require a check: Renovate merges only after every check on the branch passed.",
+  "platformAutomerge": false
 }
