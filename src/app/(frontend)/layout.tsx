@@ -1,4 +1,5 @@
 import { Chewy, Nunito } from 'next/font/google'
+import Link from 'next/link'
 import { getPayload } from 'payload'
 import React from 'react'
 
@@ -41,9 +42,9 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </a>
         <header className="site-header">
           <nav className="nav wrap" aria-label="Hauptnavigation">
-            <a className="brand" href="/">
+            <Link className="brand" href="/">
               {site?.name ?? 'Wollbi-Fescht'}
-            </a>
+            </Link>
             <NavLinks links={links} />
           </nav>
           <Garland />
