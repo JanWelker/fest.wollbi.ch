@@ -45,7 +45,7 @@
     "sharp": true
   },
   "overrides": {
-    "undici": "7.30.0",
+    "undici": "8.11.2",
     "source-map-js": "1.2.2"
   }
 }
