@@ -61,3 +61,7 @@ The image is built by `.github/workflows/push-image.yml` and published to
 `ghcr.io/janwelker/fest-wollbi-ch`. What runs it is
 [JanWelker/homelab-apps](https://github.com/JanWelker/homelab-apps), directory
 `fest-wollbi/`; Renovate moves the tag there.
+
+Every merge to `main` that changes more than docs or CI releases the next
+patch version: the workflow pushes the image tags and the `v<version>` git
+tag. For a minor or major release, push the `v*` tag by hand.
