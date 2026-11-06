@@ -19,11 +19,6 @@ export const site = {
   footer: '© wollbi.ch',
 }
 
-export const admin = {
-  email: process.env.SEED_ADMIN_EMAIL || 'fest@wollbi.ch',
-  name: 'Wollbi Fest OK',
-}
-
 export const sponsor = {
   title: 'Sponsor gefunden!',
   text: 'Wir freuen uns sehr, dass Susan & Markus (Wollbi 2) den Apéro sponsern werden.',
