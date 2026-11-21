@@ -10,6 +10,9 @@ const nextConfig: NextConfig = {
   // The Dockerfile copies .next/standalone; without this there is nothing
   // to copy. See the deployment in JanWelker/homelab-apps.
   output: 'standalone',
+  // Next.js and Payload both announce themselves in x-powered-by, which tells a
+  // scanner what to look up. Payload only adds its own while this is not false.
+  poweredByHeader: false,
   images: {
     // Uploads, and the one theme image. Anything else is refused by the
     // optimiser rather than resized on request.
