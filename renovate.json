@@ -3,8 +3,6 @@
   "extends": [
     "github>JanWelker/renovate-config"
   ],
-  "description": "Private on GitHub Free, so no ruleset can require a check: Renovate merges only after every check on the branch passed.",
-  "platformAutomerge": false,
   "packageRules": [
     {
       "description": "Payload declares graphql ^16 as a peer, and .npmrc's legacy-peer-deps would let a 17 install without complaint and break /api/graphql at runtime. Lift this when Payload's peer range includes 17.",
